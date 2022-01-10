@@ -1,5 +1,5 @@
 body {
-  background-color: #000000;
+  background-color: #24252a;
 }
 
 .grid {
@@ -19,8 +19,16 @@ body {
   font-size: 35px;
   color: #ffffff;
 }
-.btn{
+.btn {
   display: flex;
   width: 100%;
   justify-content: center;
+}
+.effect {
+  background-color: rgb(255, 177, 31);
+}
+.effect:hover {
+  background-color: rgb(1, 211, 1);
+  transform: scale(1.05, 1.05);
+  transition: all 0.3s;
 }

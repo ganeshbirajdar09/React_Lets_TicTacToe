@@ -13,12 +13,12 @@ const itemArray = new Array(9).fill("empty");
 
 const App = () => {
   const [isCross, setIsCross] = useState(false);
-  const [winMessage, setWinMessage] = useState("");
+  const [winMessage, setWinMessage] = useState(" ");
 
   const reloadGame = () => {
     setIsCross(false);
     setWinMessage("");
-    itemArray.fill("empty", 0, 9);
+    itemArray.fill("empty");
   };
 
   const checkIsWinner = () => {
@@ -71,6 +71,18 @@ const App = () => {
       itemArray[4] === itemArray[6]
     ) {
       setWinMessage(`${itemArray[2]} won`);
+    } else if (
+      itemArray[0] !== "empty" &&
+      itemArray[1] !== "empty" &&
+      itemArray[2] !== "empty" &&
+      itemArray[3] !== "empty" &&
+      itemArray[4] !== "empty" &&
+      itemArray[5] !== "empty" &&
+      itemArray[6] !== "empty" &&
+      itemArray[7] !== "empty" &&
+      itemArray[8] !== "empty"
+    ) {
+      setWinMessage(`It's a DRAW`);
     }
   };
 
@@ -99,24 +111,18 @@ const App = () => {
               <h1 className="text-success text-uppercase text-center">
                 {winMessage}
               </h1>
-              <Button
-                isOpen
-                onClick={() => reloadGame()}
-                color="success"
-                block
-                onClick={reloadGame}
-              >
+              <Button isOpen color="success" block onClick={reloadGame}>
                 Reload the game
               </Button>
             </div>
           ) : (
             <h1 className="text-center text-warning">
-              {isCross ? "Cross" : "Circle"} turns
+              {isCross ? "Cross" : "Circle"}'s turns
             </h1>
           )}
           <div className="grid">
             {itemArray.map((item, index) => (
-              <Card color="warning" onClick={() => changeItem(index)}>
+              <Card className="effect" onClick={() => changeItem(index)}>
                 <CardBody className="box">
                   <Icon name={item} />
                 </CardBody>
